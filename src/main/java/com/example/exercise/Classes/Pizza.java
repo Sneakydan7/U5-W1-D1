@@ -19,10 +19,20 @@ public class Pizza extends MenuObject {
         this.calories = 600;
         this.addATopping(new Topping("Tomato", 0.50, 50));
         this.addATopping(new Topping("Cheese", 0.50, 60));
-
     }
 
     public void addATopping(Topping topping) {
         toppings.add(topping);
+    }
+
+    public void calcPrice() {
+        Double sum = this.getPrice();
+
+        for (Topping topping : toppings) {
+            sum += topping.getPrice();
+
+        }
+        this.setPrice(sum);
+
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -23,6 +24,7 @@ public class BeansConfig {
     public Pizza hawaiian() {
         Pizza hawaiian = new Pizza("Hawaiian", 7.00);
         hawaiian.addATopping(pineapple());
+        hawaiian.calcPrice();
         return hawaiian;
     }
 
@@ -31,6 +33,7 @@ public class BeansConfig {
         Pizza diavola = new Pizza("Diavola", 9.00);
         diavola.addATopping(salami());
         diavola.addATopping(onions());
+        diavola.calcPrice();
         return diavola;
     }
 
@@ -87,6 +90,10 @@ public class BeansConfig {
     public Menu menu() {
 
         Menu menu = new Menu();
+
+        List<Pizza> pizzas = Arrays.asList(margherita(), diavola(), hawaiian());
+        List<Topping> toppings = Arrays.asList(ham(), pineapple(), onions(), cheese(), salami());
+        List<Drink> drinks = Arrays.asList(water(), lemonade(), wine());
 
         menu.addMenuItem(margherita());
         menu.addMenuItem(diavola());
