@@ -1,18 +1,24 @@
 package com.example.exercise.Beans;
 
-import com.example.exercise.Classes.Drink;
-import com.example.exercise.Classes.Menu;
-import com.example.exercise.Classes.Pizza;
-import com.example.exercise.Classes.Topping;
+import com.example.exercise.Classes.*;
+import com.example.exercise.Enums.TableStatus;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Configuration
+@PropertySource("application.properties")
 public class BeansConfig {
+    @Bean
+    public Double getCopertoCost(@Value("${coperto.cost}") Double cost) {
+        return cost;
+    }
+
     // --------------------------------------PIZZAS---------------------------------------------
 
     @Bean
@@ -80,6 +86,29 @@ public class BeansConfig {
     @Bean
     public Drink wine() {
         return new Drink("Wine", 7.49, 607);
+    }
+
+
+    // --------------------------------------TABLES---------------------------------------------
+
+    @Bean
+    public Table table1() {
+        return new Table(1, 4);
+    }
+
+    @Bean
+    public Table table2() {
+        return new Table(2, 8);
+    }
+
+    @Bean
+    public Table table3() {
+        return new Table(3, 5);
+    }
+
+    @Bean
+    public Table table4() {
+        return new Table(4, 2);
     }
 
 

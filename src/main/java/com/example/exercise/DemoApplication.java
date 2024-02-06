@@ -15,6 +15,7 @@ public class DemoApplication {
 
         Menu m = (Menu) ctx.getBean("menu");
         Menu.showMenu(m);
+        
 
     }
 
