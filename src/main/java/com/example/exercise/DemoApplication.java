@@ -10,11 +10,6 @@ public class DemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(DemoApplication.class);
-
-
-        Menu m = (Menu) ctx.getBean("menu");
-        Menu.showMenu(m);
         
 
     }

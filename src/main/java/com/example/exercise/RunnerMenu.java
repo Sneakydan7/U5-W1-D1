@@ -1,6 +1,7 @@
 package com.example.exercise;
 
 import com.example.exercise.Classes.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
+@Slf4j
 public class RunnerMenu implements CommandLineRunner {
     @Autowired
     private AnnotationConfigApplicationContext ctx;
@@ -19,6 +21,11 @@ public class RunnerMenu implements CommandLineRunner {
     @Override
 
     public void run(String... args) throws Exception {
+
+        Menu m = (Menu) ctx.getBean("menu");
+        log.info(String.valueOf(m));
+        //  Menu.showMenu(m);
+
 
         Double seatPrice = (Double) ctx.getBean("getCopertoCost");
 
@@ -47,10 +54,17 @@ public class RunnerMenu implements CommandLineRunner {
 
 
         Order order1 = new Order(1, 3, table1, orderlist1);
+        System.out.printf("----- AGGIUNTA ORDINE NUM %s -----%n", order1.getOrderNum());
+        System.out.println("---------------------------------------");
+        System.out.printf("----- PREZZO ORDINE PRE COPERTI NUM %s ----- %n", order1.getOrderNum());
+        System.out.println("---------------------------------------");
         order1.calcTotal();
-        order1.setTotal(order1.getTotal() + (order1.getClients() * seatPrice));
-        System.out.printf("----- PREZZO FINALE ORDINE NUM %s -----", order1.getOrderNum());
         System.out.println(order1.getTotal());
+        order1.setTotal(order1.getTotal() + (order1.getClients() * seatPrice));
+        System.out.printf("----- PREZZO FINALE ORDINE NUM %s -----%n", order1.getOrderNum());
+        System.out.println("---------------------------------------");
+        System.out.println(order1.getTotal());
+        System.out.println("---------------------------------------");
 
 
     }

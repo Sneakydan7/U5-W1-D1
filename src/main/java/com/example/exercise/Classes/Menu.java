@@ -9,6 +9,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @ToString
+
 public class Menu {
     private List<MenuObject> menuItems = new ArrayList<>();
 
