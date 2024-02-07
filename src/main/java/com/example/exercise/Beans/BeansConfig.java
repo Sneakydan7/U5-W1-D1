@@ -120,10 +120,6 @@ public class BeansConfig {
 
         Menu menu = new Menu();
 
-        List<Pizza> pizzas = Arrays.asList(margherita(), diavola(), hawaiian());
-        List<Topping> toppings = Arrays.asList(ham(), pineapple(), onions(), cheese(), salami());
-        List<Drink> drinks = Arrays.asList(water(), lemonade(), wine());
-
         menu.addMenuItem(margherita());
         menu.addMenuItem(diavola());
         menu.addMenuItem(hawaiian());
