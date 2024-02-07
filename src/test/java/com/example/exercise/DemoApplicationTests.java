@@ -36,7 +36,14 @@ class DemoApplicationTests {
     }
 
     @Test
-    public void testPizzaAddedToOrder() {
+    public void testMenu() {
+        Menu menu = (Menu) ctx.getBean("menu");
+        System.out.println("TEST 1 : Menu works");
+    }
+
+
+    @Test
+    public void testPizzaAddedToOrderAndPriceIsRight() {
         Pizza pizza = new Pizza("Margherita", 5.00);
         Table table = new Table(1, 5);
         List<MenuObject> list = new ArrayList<>();
@@ -46,6 +53,9 @@ class DemoApplicationTests {
         assertEquals(1, list.size());
         order.calcTotal();
         assertEquals(pizza.getPrice(), order.getTotal());
+
+        System.out.printf("TEST 2: Order size %s %n Expected %s -- Actual%s %n", list.size(), pizza.getPrice(), order.getTotal());
+
     }
 
     @ParameterizedTest
@@ -64,6 +74,9 @@ class DemoApplicationTests {
         Double expectedTotal = pizza.getPrice() * pizzas;
         assertEquals(expectedTotal, order.getTotal());
 
+        System.out.println();
+
+        System.out.printf("TEST 3 : Expected%s -- Actual%s %n", expectedTotal, order.getTotal());
 
     }
 
@@ -81,6 +94,8 @@ class DemoApplicationTests {
         order.calcTotal();
 
         Double expectedTotal = item.getPrice() * quantity;
+        System.out.printf("TEST 4 : Expected%s -- Actual%s %n", expectedTotal, order.getTotal());
+
         assertEquals(expectedTotal, order.getTotal());
     }
 }
